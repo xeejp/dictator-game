@@ -1,16 +1,11 @@
-defmodule DictaorGame do
-  use Xee.ThemeScript
+defmodule DictatorGame do
+  use XeeThemeScript
   require Logger
 
-  require_file "scripts/main.exs"
-  require_file "scripts/host.exs"
-  require_file "scripts/participant.exs"
-  require_file "scripts/actions.exs"
-
-  alias DictaorGame.Host
-  alias DictaorGame.Participant
-  alias DictaorGame.Main
-  alias DictaorGame.Actions
+  alias DictatorGame.Host
+  alias DictatorGame.Participant
+  alias DictatorGame.Main
+  alias DictatorGame.Actions
 
   # Callbacks
   def script_type do

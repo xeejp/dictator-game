@@ -1,4 +1,4 @@
-defmodule DictaorGame.Main do
+defmodule DictatorGame.Main do
 
   @pages ["waiting", "description", "experiment", "result"]
   @roles ["visitor", "dictator", "responder"]

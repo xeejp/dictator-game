@@ -1,6 +1,6 @@
-defmodule DictaorGame.Host do
-  alias DictaorGame.Main
-  alias DictaorGame.Actions
+defmodule DictatorGame.Host do
+  alias DictatorGame.Main
+  alias DictatorGame.Actions
 
   # Actions
   def fetch_contents(data) do

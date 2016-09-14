@@ -1,5 +1,5 @@
-defmodule DictaorGame.Participant do
-  alias DictaorGame.Actions
+defmodule DictatorGame.Participant do
+  alias DictatorGame.Actions
 
   # Actions
   def fetch_contents(data, id) do

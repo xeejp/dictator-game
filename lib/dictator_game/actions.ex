@@ -1,6 +1,6 @@
-defmodule DictaorGame.Actions do
-  alias DictaorGame.Participant
-  alias DictaorGame.Host
+defmodule DictatorGame.Actions do
+  alias DictatorGame.Participant
+  alias DictatorGame.Host
 
   def reseted(data) do
     host_action = get_action("reseted", %{participants: data.participants})
