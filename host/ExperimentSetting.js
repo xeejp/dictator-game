@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card'
 import Slider from 'material-ui/Slider'
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ActionSettings from 'material-ui/svg-icons/action/settings'
 import Dialog from 'material-ui/Dialog';
 import Toggle from 'material-ui/Toggle';
 
@@ -76,34 +77,27 @@ class ExperimentSetting extends Component {
   }
 
   render() {
-    const { page } = this.props
+    const { page, game_round } = this.props
     const { game_round_temp } = this.state
     const actions = [
-      <FlatButton
-        label="キャンセル"
-        secondary={true}
-        onTouchTap={this.handleClose}
-      />,
-      <FlatButton
+      <RaisedButton
         label="適用"
         primary={true}
         onTouchTap={this.handleConfirm}
+      />,
+      <RaisedButton
+        label="キャンセル"
+        onTouchTap={this.handleClose}
       />,
     ];
 
     return (
       <span>
-        { page == "waiting"?
-          <RaisedButton label="実験設定"
-            onTouchTap={this.handleOpen}
-            style={{marginRight: "12px"}}
-          />
-        :
-          <FlatButton label="実験設定"
-            style={{marginRight: "12px"}}
-            disabled={true}
-          />
-        }
+        <FloatingActionButton label="実験設定"
+          onTouchTap={this.handleOpen}
+          style={{marginRight: "12px"}}
+          disabled={page != "waiting"}
+        ><ActionSettings /></FloatingActionButton>
         <Dialog
           title="実験設定"
           actions={actions}
@@ -111,6 +105,7 @@ class ExperimentSetting extends Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
+          <p>現在のラウンド数: {game_round}回</p>
           <p>ゲームのラウンド数: {game_round_temp}回 (役割交換回数: {game_round_temp-1}回)</p>
           { game_round_temp != 1?
             <RaisedButton
@@ -119,7 +114,7 @@ class ExperimentSetting extends Component {
               onClick={this.handleRoundDec}
             />
             :
-            <FlatButton
+            <RaisedButton
               label="-"
               style={styles.game_roundButton}
             />
