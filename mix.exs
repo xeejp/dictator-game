@@ -2,7 +2,7 @@ defmodule DictatorGame.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :dictator_game,
+    [app: :xee_dictator_game,
      version: "0.1.0",
      build_path: "../../_build",
      config_path: "../../config/config.exs",
