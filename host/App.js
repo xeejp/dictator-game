@@ -13,7 +13,7 @@ import PageSteps from './PageSteps.js'
 import Users from './Users.js'
 import Chart from '../components/Chart.js'
 import ExperimentSetting from './ExperimentSetting.js'
-import MatchingButton from './MatchingButton.js'
+import EditQuestion from './EditQuestion.js'
 import DownloadButton from './DownloadButton'
 
 import throttle from 'react-throttle-render'
@@ -45,7 +45,7 @@ class App extends Component {
         <Users />
         <ThrottledChart />
         <ExperimentSetting />
-        <MatchingButton />
+        <EditQuestion style={{ marginLeft: "2%" }} disabled={page != "waiting"} />
         <DownloadButton
           fileName={"dictator_game.csv"}
           list={[

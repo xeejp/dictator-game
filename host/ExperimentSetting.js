@@ -95,7 +95,6 @@ class ExperimentSetting extends Component {
       <span>
         <FloatingActionButton label="実験設定"
           onTouchTap={this.handleOpen}
-          style={{marginRight: "12px"}}
           disabled={page != "waiting"}
         ><ActionSettings /></FloatingActionButton>
         <Dialog
