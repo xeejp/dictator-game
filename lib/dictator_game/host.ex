@@ -2,6 +2,10 @@ defmodule DictatorGame.Host do
   alias DictatorGame.Main
   alias DictatorGame.Actions
 
+  def filter_data(data) do
+    data
+  end
+
   # Actions
   def fetch_contents(data) do
     data
@@ -23,28 +27,11 @@ defmodule DictatorGame.Host do
       dictator_results: %{},
       game_round: 1,
     }
-    |> Actions.reseted()
-  end
-
-  def sync_game_progress(data, game_progress) do
-    Actions.sync_game_progress(data, game_progress)
-  end
-
-  def sync_participants_length(data, participants_length) do
-    Actions.sync_participants_length(data, participants_length)
-  end
-
-  def show_results(data, results) do
-    put_in(data, [:dictator_results],
-      get_in(results, ["dictator_results"])
-    )
-    |> Actions.show_results(results)
   end
 
   def change_page(data, page) do
     if page in Main.pages do
       %{data | page: page}
-      |> Actions.change_page(page)
     else
       data
     end
@@ -53,7 +40,6 @@ defmodule DictatorGame.Host do
   def change_game_round(data, game_round) do
     if game_round < 0 do game_round = 1 end
     %{data | game_round: game_round}
-    |> Actions.change_game_round(game_round)
   end
 
   def match(data) do
@@ -95,10 +81,5 @@ defmodule DictatorGame.Host do
     {participants, groups} = Enum.reduce(groups, acc, reducer)
 
     %{data | participants: participants, pairs: groups}
-    |> Actions.matched()
-  end
-  
-  def format_contents(data) do
-    data
   end
 end

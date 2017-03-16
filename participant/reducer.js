@@ -36,6 +36,7 @@ const initialState = {
   responseOK: false,
   changeRole: false,
   redo_flag: false,
+  dictator_results: {},
   participants_length: 0,
 }
 
