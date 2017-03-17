@@ -29,6 +29,10 @@ defmodule DictatorGame.Host do
     }
   end
 
+  def change_description(data, text) do
+    %{data | description: text}
+  end
+
   def change_page(data, page) do
     if page in Main.pages do
       %{data | page: page}

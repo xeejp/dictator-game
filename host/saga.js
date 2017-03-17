@@ -8,6 +8,7 @@ import {
   match,
   changePage,
   changeGameRound,
+  changeDescription
 } from './actions.js'
 
 import {
@@ -48,11 +49,19 @@ function* changeGameRoundSaga() {
   }
 }
 
+function* changeDescriptionSaga() {
+  while(true) {
+    const { payload } = yield take(`${changeDescription}`)
+    sendData('CHANGE_DESCRIPTION', payload)
+  }
+}
+
 function* saga() {
   yield fork(fetchContentsSaga)
   yield fork(matchSaga)
   yield fork(changePageSaga)
   yield fork(changeGameRoundSaga)
+  yield fork(changeDescriptionSaga)
 }
 
 export default saga

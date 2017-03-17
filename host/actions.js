@@ -13,6 +13,8 @@ export const fallChartButton = createAction('FALL_CHART_BUTTON')
 export const changePage = createAction('CHANGE_PAGE', page => page)
 export const changeGameRound = createAction('CHANGE_GAME_ROUND', game_round => game_round)
 
+export const changeDescription = createAction('CHANGE_QUESTION', text => text)
+
 export const intoLoading = createAction('INTO_LOADING')
 export const exitLoading = createAction('EXIT_LOADING')
 
