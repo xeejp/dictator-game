@@ -27,7 +27,7 @@ defmodule DictatorGame.Main do
     %{
       members: members,
       now_round: 1,
-      allo_temp: Enum.random(0..10) * 100,
+      allo_temp: 0,
       state: "allocating",
       pair_results: []
     }
