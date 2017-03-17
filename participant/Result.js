@@ -1,17 +1,53 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Chart from '../components/Chart.js'
+import { Card, CardHeader, CardText } from 'material-ui/Card'
 
+import Chart from '../components/Chart.js'
+import RoundResult from './RoundResult.js'
 import { fetchContents } from './actions'
 
-const mapStateToProps = ({}) => ({
-})
+const mapStateToProps = ({ id, pair_results }) => {
+  return {
+    id,
+    results: pair_results.concat().reverse()
+  }
+}
 
-const Result = ({}) => (
+const Result = ({ id, results }) => (
   <div>
-    <Chart />
+    <Card initiallyExpanded={true}>
+      <CardHeader
+        title='グラフ'
+        actAsExpander={true}
+        showExpandableButton={true}
+      />
+      <CardText expandable={true}>
+        <Chart />
+      </CardText>
+    </Card>
+    <Card>
+      <CardHeader
+        title='各ラウンドの結果'
+        actAsExpander={true}
+        showExpandableButton={true}
+      />
+      <CardText expandable={true}>
+        {results.map(({ dictator, value }, index) => {
+          return (
+            <div key={index}>
+              <p>{index + 1}ラウンド目</p>
+              <RoundResult
+                id={id}
+                dictator={dictator}
+                value={value}
+              />
+            </div>
+          )
+        })}
+      </CardText>
+    </Card>
   </div>
 )
 
-export default connect()(Result)
+export default connect(mapStateToProps)(Result)

@@ -11,6 +11,7 @@ defmodule DictatorGame.Participant do
       game_progress: true,
       participants: %{id => true},
       pairs: %{pair_id => %{
+        pair_results: true,
         members: true,
         now_round: true,
         allo_temp: true,
@@ -22,6 +23,7 @@ defmodule DictatorGame.Participant do
     data
     |> Transmap.transform(rule)
     |> Map.put(:participants_length, Map.size(data.participants))
+    |> Map.put(:id, id)
   end
 
   # Actions
@@ -89,6 +91,9 @@ defmodule DictatorGame.Participant do
       false -> now_round
     end
     )
+    |> update_in([:pairs, pair_id, :pair_results], fn list ->
+      [%{dictator: target_id, value: value} | list]
+    end)
     |> put_in([:dictator_results], Map.merge( get_in(data, [:dictator_results]), %{
       Integer.to_string(now_round) => Map.merge( get_in(data, [:dictator_results,
          Integer.to_string(now_round)]) || %{}, %{
