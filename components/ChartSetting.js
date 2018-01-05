@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Chip from 'material-ui/chip'
 
 import { changeChartRound } from 'host/actions.js'
-import { InsertVariable } from '../util/ReadJSON';
+import { InsertVariable, ReadJSON } from '../util/ReadJSON';
 
 const mapStateToProps = ({ chart_round, dictator_results }) => ({
   chart_round,

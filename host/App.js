@@ -18,6 +18,8 @@ import DownloadButton from './DownloadButton'
 
 import throttle from 'react-throttle-render'
 
+import { changePage } from './actions'
+
 import { ReadJSON, InsertVariable } from '../util/ReadJSON'
 
 const ThrottledChart = throttle(Chart, 100)
@@ -37,6 +39,16 @@ class App extends Component {
     dispatch(intoLoading())
     dispatch(fetchContents())
     dispatch(exitLoading())
+  }
+
+  componentWillReceiveProps({ pairs, page }) {
+    if(page == "experiment") {
+      for(var key in pairs) {
+        if(pairs[key].state != "finished") return
+      }
+      const { dispatch } = this.props
+      dispatch(changePage("result"))
+    }
   }
 
   render() {

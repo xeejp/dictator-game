@@ -76,6 +76,10 @@
     "pass_point": "相手に渡すポイント",
     "point__": "<point>ポイント",
     "return_point": "相手から受け取ったポイント",
+
+    "user_allo_v": "あなたへの配分: <allo>",
+    "enemy_allo_v": "<enemy>への配分: <allo>",
+
     "chart": {
       "dictator_point": "独裁者に分配されたポイント",
       "count": "回数",
