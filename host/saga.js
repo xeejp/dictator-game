@@ -13,7 +13,7 @@ import {
 
 import {
   pages,
-} from 'util/index'
+} from '../util/index'
 
 function* fetchContentsSaga() {
   while(true) {
