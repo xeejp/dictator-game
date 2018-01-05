@@ -6,6 +6,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import {
   getRoleName,
 } from 'util/index'
+import { InsertVariable, ReadJSON } from '../../util/ReadJSON';
 
 const mapStateToProps = ({ role }) => ({
   role
@@ -15,11 +16,11 @@ const Finished = ({ role }) => (() => {
     <div>
     <Card>
     <CardHeader
-    title={getRoleName(role) + "側"}
-    subtitle="終了待ち"
+    title={InsertVariable(ReadJSON().static_text["role_side"], { role: getRoleName(role) })}
+    subtitle={ReadJSON().static_text["wait_end"]}
       />
     <CardText>
-    <p>このペアの実験は終了しました。他のペアが終了するまでお待ち下さい。</p>
+    <p>{ReadJSON().static_text["wait"]}</p>
     </CardText>
     </Card>
     </div>

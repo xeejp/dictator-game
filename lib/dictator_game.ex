@@ -7,16 +7,6 @@ defmodule DictatorGame do
   alias DictatorGame.Main
   alias DictatorGame.Actions
 
-  @description """
-  <h2>独裁者ゲーム</h2>
-  <h3>ルールの説明</h3>
-  <p>あなたは誰かとペアになって実験を行います。<br/>参加者には2つの役割があり、今回は{round}回の役割交代があります。</p>
-  <h4>独裁者</h4>
-  <p>独裁者はポイントを自分と受け手の間でどう分けるか決定できます。</p>
-  <h4>受け手</h4>
-  <p>受け手は提案者の提案を承認します。</p>
-  """
-
   # Callbacks
   def script_type do
     :message
@@ -26,7 +16,7 @@ defmodule DictatorGame do
 
   def init do
     {:ok, %{data: %{
-      description: @description,
+      dynamic_text: %{},
       page: "waiting",
       game_progress: 0,
       game_round: 1,

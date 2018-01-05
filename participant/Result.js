@@ -6,6 +6,7 @@ import { Card, CardHeader, CardText } from 'material-ui/Card'
 import Chart from '../components/Chart.js'
 import RoundResult from './RoundResult.js'
 import { fetchContents } from './actions'
+import { ReadJSON, InsertVariable } from '../util/ReadJSON';
 
 const mapStateToProps = ({ id, pair_results }) => {
   return {
@@ -18,7 +19,7 @@ const Result = ({ id, results }) => (
   <div>
     <Card initiallyExpanded={true}>
       <CardHeader
-        title='グラフ'
+        title={ReadJSON().static_text["graph"]}
         actAsExpander={true}
         showExpandableButton={true}
       />
@@ -28,7 +29,7 @@ const Result = ({ id, results }) => (
     </Card>
     <Card>
       <CardHeader
-        title='各ラウンドの結果'
+        title={ReadJSON().static_text["round_result"]}
         actAsExpander={true}
         showExpandableButton={true}
       />
@@ -36,7 +37,7 @@ const Result = ({ id, results }) => (
         {results.map(({ dictator, value }, index) => {
           return (
             <div key={index}>
-              <p>{index + 1}ラウンド目</p>
+              <p>{InsertVariable(ReadJSON().static_text["round___"], { round: index + 1 })}</p>
               <RoundResult
                 id={id}
                 dictator={dictator}

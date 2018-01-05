@@ -30,7 +30,7 @@ defmodule DictatorGame.Host do
   end
 
   def change_description(data, text) do
-    %{data | description: text}
+    %{data | dynamic_text: text}
   end
 
   def change_page(data, page) do

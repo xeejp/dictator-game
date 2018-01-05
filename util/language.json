@@ -1,0 +1,104 @@
+{
+  "dynamic_text": {
+    "description": [
+      "ルール説明",
+      "あなたは誰かとペアになって実験を行います。\n参加者には2つの役割があり、今回は<round>回の役割交代があります。",
+      "独裁者",
+      "独裁者はポイントを自分と受け手の間でどう分けるか決定できます。",
+      "受け手",
+      "受け手は提案者の提案を承認します。"
+    ]
+  },
+  "static_text": {
+    "title": "独裁者ゲーム",
+    "waiting": [
+      "待機画面",
+      "参加者の登録を待っています。",
+      "この画面のまましばらくお待ち下さい。",
+      "現在<num>人が参加しています。"
+    ],
+    "file": [
+      "実験日",
+      "登録者数",
+      "ペア数",
+      "ID",
+      "得点"
+    ],
+    "round_": "<round>ラウンド",
+    "apply": "適用",
+    "end": "終了",
+    "next": "次へ",
+    "continue": "実験を続ける",
+    "back": "戻る",
+    "cancel": "キャンセル",
+    "qedit": "問題文編集",
+    "config": "実験設定",
+    "current_round": "現在のラウンド数: <round>回",
+    "max_round": "ゲームのラウンド数: <round>回 (役割交換回数: <change>回)",
+    "id": "ID",
+    "role": "役割",
+    "point": "ポイント",
+    "pair_id": "所属ペアID",
+    "round": "ラウンド",
+    "state": "状況",
+    "participant_num": "登録者<num>人",
+
+    "user_role": "あなたは<role>側です",
+    "please_wait": "<role>が配分中。しばらくお待ちください。",
+    "please_allo": "配分してください。",
+    "allo": "あなたへの配分<user_allo>　<role>への配分: <enemy_allo>",
+    "send": "送信",
+    "role_side": "<role>側",
+    "wait_end": "終了待ち",
+    "wait": "このペアの実験は終了しました。他のペアが終了するまでお待ち下さい。",
+    "please_ans": "回答してください。",
+    "please_wait_": "回答待ちです。しばらくお待ちください。",
+    "sent": "送信しました。受け手の回答をお待ちください。",
+    "please_ans_": "<role>が上記のように提案してきました。回答してください。",
+    "accept": "承認",
+    "reject": "拒否",
+    
+    "round__": "ラウンド: <now> / <round>",
+    "final_round": "最後のラウンド",
+    "change_count": "残り役割交代: <count>回",
+    "progress": "参加者全体の進捗: <progress> %",
+    "point_": "ポイント: <point>",
+    "role_change": "役割交換によりあなたは<role>になりました。",
+    "accepted": "先ほどの提案は承認されました。<point>ポイント獲得しました。",
+    "accepted_": "提案を承認しました。<point>ポイント獲得しました。",
+    "cant_join": "参加できませんでした。終了をお待ち下さい。",
+
+    "graph": "グラフ",
+    "round_result": "各ラウンドの結果",
+    "round___": "<round>ラウンド目",
+
+    "hold_point": "手もとに残るポイント",
+    "pass_point": "相手に渡すポイント",
+    "point__": "<point>ポイント",
+    "return_point": "相手から受け取ったポイント",
+    "chart": {
+      "dictator_point": "独裁者に分配されたポイント",
+      "count": "回数",
+      "show_round": "表示ラウンド: <round>"
+    },
+
+    "pages": [
+      "待機",
+      "説明",
+      "実験",
+      "結果"
+    ],
+
+    "roles": [
+      "見学者",
+      "独裁者",
+      "受け手"
+    ],
+
+    "status": [
+      "配分中",
+      "判定中",
+      "終了"
+    ]
+  }
+}

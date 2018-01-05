@@ -18,6 +18,8 @@ import DownloadButton from './DownloadButton'
 
 import throttle from 'react-throttle-render'
 
+import { ReadJSON, InsertVariable } from '../util/ReadJSON'
+
 const ThrottledChart = throttle(Chart, 100)
 
 const mapStateToProps = ({ dispatch, dictator_results, participants, pairs, page }) => ({
@@ -49,15 +51,15 @@ class App extends Component {
         <DownloadButton
           fileName={"dictator_game.csv"}
           list={[
-            ["独裁者ゲーム"],
-            ["実験日", new Date()],
-            ["登録者数", Object.keys(participants).length],
-            ["ペア数", Object.keys(pairs).length],
-            ["ID", "得点"],
+            [ReadJSON().static_text["title"]],
+            [ReadJSON().static_text["file"][0], new Date()],
+            [ReadJSON().static_text["file"][1], Object.keys(participants).length],
+            [ReadJSON().static_text["file"][2], Object.keys(pairs).length],
+            [ReadJSON().static_text["file"][3], ReadJSON().static_text["file"][4]],
           ].concat(
             Object.keys(participants).map(id => [id, participants[id].point])
           ).concat(
-            [["得点"].concat(Object.keys(dictator_results).map(key => key + "ラウンド"))]
+            [[ReadJSON().static_text["file"][4]].concat(Object.keys(dictator_results).map(key => InsertVariable(ReadJSON().static_text["round_"], { round: key })))]
           ).concat(
             [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000].map(n => [n].concat(
               Object.keys(dictator_results).map(key => {

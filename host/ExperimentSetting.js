@@ -10,6 +10,7 @@ import Dialog from 'material-ui/Dialog';
 import Toggle from 'material-ui/Toggle';
 
 import { changeGameRound } from './actions.js'
+import { ReadJSON, InsertVariable } from '../util/ReadJSON';
 
 const mapStateToProps = ({ game_round, page }) => ({
   game_round,
@@ -84,31 +85,31 @@ class ExperimentSetting extends Component {
     const { game_round_temp } = this.state
     const actions = [
       <RaisedButton
-        label="適用"
+        label={ReadJSON().static_text["apply"]}
         primary={true}
         onTouchTap={this.handleConfirm}
       />,
       <RaisedButton
-        label="キャンセル"
+        label={ReadJSON().static_text["cancel"]}
         onTouchTap={this.handleClose}
       />,
     ];
 
     return (
       <span>
-        <FloatingActionButton label="実験設定"
+        <FloatingActionButton label={ReadJSON().static_text["config"]}
           onTouchTap={this.handleOpen}
           disabled={page != "waiting"}
         ><ActionSettings /></FloatingActionButton>
         <Dialog
-          title="実験設定"
+          title={ReadJSON().static_text["config"]}
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <p>現在のラウンド数: {game_round}回</p>
-          <p>ゲームのラウンド数: {game_round_temp}回 (役割交換回数: {game_round_temp-1}回)</p>
+          <p>{InsertVariable(ReadJSON().static_text["current_round"], { round: game_round })}</p>
+          <p>{InsertVariable(ReadJSON().static_text["max_round"], { round: game_round_temp, change: game_round_temp-1 })}</p>
           { game_round_temp != 1?
             <RaisedButton
               label="-"

@@ -8,6 +8,7 @@ import Highcharts from 'react-highcharts'
 import ChartSetting from './ChartSetting.js'
 
 import { fallChartButton } from 'host/actions.js'
+import { ReadJSON, InsertVariable } from '../util/ReadJSON';
 
 function compDataAccept(categories, results, round) {
   const values = results[round]? Object.keys(results[round]).filter(id =>
@@ -32,13 +33,13 @@ const mapStateToProps = ({ dictator_results, chart_round, chart_button, role}) =
         href: 'https://xee.jp/'
       },
       title: {
-        text: "独裁者に分配されたポイント"
+        text: ReadJSON().static_text["chart"]["dictator_point"]
       },
       xAxis: {
         categories: categories,
         crosshair: true,
         title: {
-          text: "ポイント"
+          text: ReadJSON().static_text["point"]
         },
         labels: {
           step: 1
@@ -48,7 +49,7 @@ const mapStateToProps = ({ dictator_results, chart_round, chart_button, role}) =
         allowDecimals: false,
         min: 0,
         title: {
-          text: "回数"
+          text: ReadJSON().static_text["chart"]["count"]
         },
         labels: {
           step: 1,
@@ -56,7 +57,7 @@ const mapStateToProps = ({ dictator_results, chart_round, chart_button, role}) =
       },
       tooltip: {
         formatter: function () {
-          return '<b>' + this.x + 'ポイント</b><br/>' +
+          return '<b>' + InsertVariable(ReadJSON().static_text["point__"], { point: this.x }) + '</b><br/>' +
             this.series.name + ': ' + this.y
         }
       },
@@ -67,7 +68,7 @@ const mapStateToProps = ({ dictator_results, chart_round, chart_button, role}) =
       },
       series: [
         {
-          name: "承認",
+          name: ReadJSON().static_text["accept"],
           data: compDataAccept(categories, dictator_results, chart_round),
           stack: 'dictator',
         },
@@ -110,7 +111,7 @@ class Chart extends Component {
         onExpandChange={this.handleExpandChange}
       >
         <CardHeader
-          title="グラフ"
+          title={ReadJSON().static_text["graph"]}
           actAsExpander={true}
           showExpandableButton={true}
         />
